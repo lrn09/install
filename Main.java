@@ -4,20 +4,16 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Main {
-    public static StringBuilder doSomeFiles(File file) {
+    public static StringBuilder doSomeFiles(File file) throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
 
         if (!file.getName().endsWith("/")) {
             file.mkdir();
             stringBuilder.append("Директория " + file.getName() + " создана\n");
         } else {
-            try {
-                file.createNewFile();
-                stringBuilder.append("Файл " + file.getName() + " создан\n");
+            file.createNewFile();
+            stringBuilder.append("Файл " + file.getName() + " создан\n");
 
-            } catch (IOException e) {
-                stringBuilder.append(e.getMessage() + "\n");
-            }
         }
         return stringBuilder;
     }
